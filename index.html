@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low-fidelity Wireframe - Portfolio</title>
+    <!-- Sử dụng TailwindCSS để căn chỉnh bố cục nhanh chóng -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ép buộc dùng font Arial/sans-serif cơ bản theo yêu cầu */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Tạo hiệu ứng khối ảnh Wireframe (hình chữ X chéo màu xám) */
+        .wireframe-img {
+            background-color: #f3f4f6; /* Xám nhạt */
+            border: 2px solid #9ca3af; /* Viền xám đậm hơn */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        /* Vẽ hai đường chéo X cho khối ảnh */
+        .wireframe-img::before, .wireframe-img::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-bottom: 1px solid #d1d5db;
+            transform-origin: bottom left;
+        }
+        .wireframe-img::before {
+            transform: skewY(calc(atan2(var(--h, 100), var(--w, 100))));
+        }
+        .wireframe-img::after {
+            transform-origin: bottom right;
+            transform: skewY(calc(-1 * atan2(var(--h, 100), var(--w, 100))));
+        }
+
+        /* Viền phác thảo cho các khối văn bản/nút bấm */
+        .wireframe-box {
+            border: 2px solid #374151; /* Xám đen */
+        }
+        
+        .wireframe-text-line {
+            height: 1rem;
+            background-color: #e5e7eb;
+            margin-bottom: 0.5rem;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- KHU VỰC THÔNG BÁO CHO HỌC VIÊN (Có thể bỏ qua khi chụp ảnh) -->
+    <div class="bg-gray-200 text-gray-800 text-sm text-center py-2 border-b-2 border-gray-400 font-bold hidden md:block">
+        MẸO BÀI TẬP: Hãy thu nhỏ cửa sổ trình duyệt này lại để xem và chụp ảnh bản phác thảo trên giao diện Mobile!
+    </div>
+
+    <!-- HEADER: Logo & Navigation -->
+    <header class="border-b-4 border-gray-800 p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Logo Placeholder -->
+            <div class="wireframe-img w-32 h-12 flex items-center justify-center font-bold text-gray-500 text-sm">
+                [ LOGO ]
+            </div>
+
+            <!-- Navigation Links (Ẩn trên mobile, hiện trên desktop) -->
+            <nav class="hidden md:flex space-x-8 font-bold text-gray-600">
+                <a href="#" class="hover:text-black border-b-2 border-transparent hover:border-black">Trang chủ</a>
+                <a href="#" class="hover:text-black border-b-2 border-transparent hover:border-black">Sản phẩm</a>
+                <a href="#" class="hover:text-black border-b-2 border-transparent hover:border-black">Giới thiệu</a>
+                <a href="#" class="hover:text-black border-b-2 border-transparent hover:border-black">Liên hệ</a>
+            </nav>
+
+            <!-- Hamburger Menu Placeholder (Chỉ hiện trên mobile) -->
+            <div class="md:hidden wireframe-box w-10 h-10 flex flex-col justify-evenly items-center p-1">
+                <div class="w-full h-1 bg-gray-800"></div>
+                <div class="w-full h-1 bg-gray-800"></div>
+                <div class="w-full h-1 bg-gray-800"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-6xl mx-auto w-full p-4 md:p-8 space-y-16">
+
+        <!-- 1. HERO SECTION -->
+        <section class="flex flex-col-reverse md:flex-row items-center gap-8">
+            <!-- Text Content -->
+            <div class="w-full md:w-1/2 space-y-6">
+                <!-- Heading Placeholder -->
+                <div>
+                    <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-wider uppercase">
+                        [ TIÊU ĐỀ CHÍNH CỦA TRANG ]
+                    </h1>
+                    <!-- Paragraph Lines Placeholder -->
+                    <div class="wireframe-text-line w-full"></div>
+                    <div class="wireframe-text-line w-11/12"></div>
+                    <div class="wireframe-text-line w-4/5"></div>
+                    <div class="wireframe-text-line w-3/4"></div>
+                </div>
+                
+                <!-- Call To Action Button Placeholder -->
+                <div class="wireframe-box inline-block px-8 py-4 bg-gray-100 font-bold text-gray-800 tracking-widest text-center cursor-pointer hover:bg-gray-200">
+                    [ NÚT BẤM KÊU GỌI HÀNH ĐỘNG ]
+                </div>
+            </div>
+
+            <!-- Main Image Placeholder -->
+            <div class="w-full md:w-1/2">
+                <div class="wireframe-img w-full h-64 md:h-96">
+                    <span class="z-10 bg-white px-2 py-1 border border-gray-400 text-gray-500 font-bold text-sm tracking-widest">HERO IMAGE</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROJECTS / PRODUCTS GRID SECTION -->
+        <section class="pt-8 border-t-2 border-dashed border-gray-300">
+            <h2 class="text-2xl font-bold text-center mb-8 uppercase text-gray-800">[ Danh sách Dự án / Sản phẩm ]</h2>
+            
+            <!-- Grid Container: 1 cột trên Mobile, 3 cột trên Desktop -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="wireframe-box p-4 flex flex-col h-full">
+                    <div class="wireframe-img w-full h-48 mb-4">
+                        <span class="z-10 bg-white px-2 py-1 text-xs text-gray-500 font-bold border border-gray-400">IMG 1</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800">[ Tên Sản Phẩm 1 ]</h3>
+                    <div class="wireframe-text-line w-full"></div>
+                    <div class="wireframe-text-line w-5/6"></div>
+                    <div class="wireframe-text-line w-4/6 mb-4"></div>
+                    <div class="mt-auto wireframe-box py-2 text-center text-sm font-bold bg-gray-100 text-gray-600">
+                        [ Xem chi tiết ]
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="wireframe-box p-4 flex flex-col h-full">
+                    <div class="wireframe-img w-full h-48 mb-4">
+                        <span class="z-10 bg-white px-2 py-1 text-xs text-gray-500 font-bold border border-gray-400">IMG 2</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800">[ Tên Sản Phẩm 2 ]</h3>
+                    <div class="wireframe-text-line w-full"></div>
+                    <div class="wireframe-text-line w-full"></div>
+                    <div class="wireframe-text-line w-1/2 mb-4"></div>
+                    <div class="mt-auto wireframe-box py-2 text-center text-sm font-bold bg-gray-100 text-gray-600">
+                        [ Xem chi tiết ]
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="wireframe-box p-4 flex flex-col h-full">
+                    <div class="wireframe-img w-full h-48 mb-4">
+                        <span class="z-10 bg-white px-2 py-1 text-xs text-gray-500 font-bold border border-gray-400">IMG 3</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800">[ Tên Sản Phẩm 3 ]</h3>
+                    <div class="wireframe-text-line w-full"></div>
+                    <div class="wireframe-text-line w-11/12"></div>
+                    <div class="wireframe-text-line w-3/4 mb-4"></div>
+                    <div class="mt-auto wireframe-box py-2 text-center text-sm font-bold bg-gray-100 text-gray-600">
+                        [ Xem chi tiết ]
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 border-t-4 border-gray-800 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-600 font-bold text-sm">
+                [ Nội dung Footer / Bản quyền &copy; 2026 ]
+            </div>
+            
+            <!-- Social Icons Placeholders -->
+            <div class="flex space-x-4">
+                <div class="wireframe-box w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs text-gray-600 font-bold">f</div>
+                <div class="wireframe-box w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs text-gray-600 font-bold">in</div>
+                <div class="wireframe-box w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs text-gray-600 font-bold">ig</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
